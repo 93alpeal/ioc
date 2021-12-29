@@ -1,11 +1,15 @@
 package kr.co.ezenac.ioc;
 
-import java.util.Base64;
+public class Encoder {
 
-public class Encoder implements IEncoder{
+    private IEncoder iEncoder;
 
-    public String encode(String message){
-        return Base64.getEncoder().encodeToString(message.getBytes());
+    public Encoder() {
+       this.iEncoder = new Base64Encoder();
+        //this.iEncoder = new UrlEncoder();
     }
 
+    public String encode(String message) {
+        return iEncoder.encode(message);
+    }
 }
